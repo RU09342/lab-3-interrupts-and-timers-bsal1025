@@ -1,0 +1,1 @@
+"./MSP430F5529_TIMERA_BLINK.obj" "../lnk_msp430f5529.cmd" -llibmath.a -llibc.a 
