@@ -1,30 +1,52 @@
-# Button Interrupt
-Last lab you were introduced to the idea of "Polling" where in you would constantly check the status of the P1IN register to see if something has changed. While your code may have worked, it ends up spending a ton of time just checking something that has not changed. What we can do instead is use another two registers available to us from the GPIO peripheral, P1IE and P1IES, to allow our processor to just chill out and wait until something happens to act upon it. Without spending too much space on this README with explanations, what makes these interrupts tick is the following code:
+/*
+ * Button Interrupt
+ *
+ *  Created on: Oct 4, 2017
+ *  Last Updated on: Oct 4, 2017
+ *  Author: Brandon Salamone
+ */
 
-'''c
-#pragma vector=PORT1_VECTOR
-__interrupt void Port_1(void)
-{
-}
-'''
+Libraries Used:
+ msp430.h is the only library used in these programs.
 
-While you still need to initialize the Ports to be interrupt enabled and clear the flags, this "Pragma Vector" tells the compiler that when a particular interrupt occurs, run this code. 
+Dependencies:
+The msp430.h library does not have any dependencies.
 
-## A word of caution...
-While you might be willing to just jump straight in and begin using example code you may find, I would seriously take a few minutes and find a few good videos or tutorials to help understand exactly what is happening in the processor. I implore you to do this since you will inevitably have issues in the future which are solved by not understanding how the processor processes interrupts. A prime example is when I once tried implementing UART and I did not realize that you had to clear a flag or else my code would get stuck in an infinite loop. Hours of my life are now gone thanks to me at the time not understanding how interrupts worked with the peripherals I was utilizing. A few resources I have used in the past include:
-* https://youtu.be/GR8S2XT47eI?t=1334
-* http://processors.wiki.ti.com/index.php/MSP430_LaunchPad_Interrupt_vs_Polling
-* http://www.simplyembedded.org/tutorials/msp430-interrupts/
+User Interface:
+Each program is initialized with the push of a button. This causes each program to enter its ISR. Once inside the ISR, holding the button down will cause
+an LED to blink. When the button is released the LED will either remain on or shut off depending on the LED state when the button is released.   
 
-## Task
-Your goal for this part of the lab is to replicate your button code from Lab 2, where the LED should change states only when the button is pressed. This can be extended to include behaviors such as only have the LED on when the button is depressed, or have the LED blink one color when pressed and another when it is let go. Another behavior extends from the second lab which is speed control based on the button presses. For example, have the rate of the LED cycle between a "low", "Medium", and "High" rate of speed.
+Common Functionality Among All Processors:
+All processors contain these elements in order to blink multiple LEDs at different rates:
+ 1. The watchdog timer is cleared
+ 2. The P1DIR is set such that two LEDs will be outputs
+ 3. The PxOUT and PxREN registers are set such that the pull-up resistors are enabled in a button on each board
+ 4. The PxIE and PxIES are set to the same value as PxOUT and PxREN to enable and select the interrupt on the button in use
+ 5. The PxIFG registers are set to the inverse of the other interrupt registers to clear the interrupt flag on each processor
+ 6. Within every ISR is an if statement that controls which LED blinks. The functionality of this if statement is described above
+    in user interface.
 
-## Extra Work 
-### Binary Counter/Shift Register
-Either use a function generator, another processor, or a button to control your microcontroller as an 8-bit binary counter using 8 LEDs to indicate the current status of the counter.
+Key Differences Between Processors:
+ 1. MSP430FR2311, MSP430FR6989, and MSP430FR5994 all have an extra line of code that disables the default high-impedance mode. The MSP430F5529 and
+    MSP430G2553 processors do not need this line of code. 
 
-### Multiple Buttons
-Come up with a behavior of your own that incorporates needing to use two buttons or more and these two buttons must be implemented using interrupts.
+ 2. Different Processors have different LED pin assignments. Below the LED pin assignments will be shown for each processor.
+    msp430F5529: P1.0 and P4.7
+    msp430FR2311: P1.0 and P2.0
+    msp430FR5994: P1.0 and P1.1 *
+    msp430FR5989: P1.0 and P9.7
+    msp430G2553: P1.0 and P1.6 *
+    
+    * For these processors, the hexadecimal values pertaining to each pin can be combined into one number, since they have P1 in common.
+      For example in the msp430FR5994 processor it would be: P1DIR = BIT0 | BIT1 = 0x03 
 
-### (Recommended) Energy Trace
-Using the built in EnergyTrace(R) software in CCS and the corresponding supporting hardware on the MSP430 development platforms, analyze the power consumption between the button based blink code you wrote last week versus this week. What can you do to decrease the amount of power used within the microcontroller in this code? Take a look at the MSP430FR5994 and the built in SuperCap and see how long your previous code and the new code lasts. For a quick intro to EnergyTrace(R), take a look at this video: https://youtu.be/HqeDthLrcsg
+  3. Different processors also use different buttons to control the interrupt in the code. The button pins are shown below:
+     msp430F5529: P1.1
+     msp430FR2311: P1.1
+     msp430FR5994: P5.6
+     msp430FR5989: P1.1
+     msp430G2553: P1.3
+  
+  4. The MSP430G2553 processor is set up to run the "color change" portion of the extra work from lab 2 in its ISR. On start-up, the green LED blinks. 
+     When the button at P1.3 is held down, the red LED blinks instead.
+

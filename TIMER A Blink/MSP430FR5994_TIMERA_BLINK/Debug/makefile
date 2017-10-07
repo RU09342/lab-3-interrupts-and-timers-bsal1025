@@ -10,7 +10,7 @@ GEN_OPTS__FLAG :=
 GEN_CMDS__FLAG := 
 
 ORDERED_OBJS += \
-"./main.obj" \
+"./MSP430FR5994_TIMERA_BLINK.obj" \
 "../lnk_msp430fr5994.cmd" \
 $(GEN_CMDS__FLAG) \
 -llibmpu_init.a \
@@ -155,8 +155,8 @@ MSP430FR5994_TIMERA_BLINK.hex: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "main.obj" 
-	-$(RM) "main.d" 
+	-$(RM) "MSP430FR5994_TIMERA_BLINK.obj" 
+	-$(RM) "MSP430FR5994_TIMERA_BLINK.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

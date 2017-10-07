@@ -10,7 +10,7 @@ GEN_OPTS__FLAG :=
 GEN_CMDS__FLAG := 
 
 ORDERED_OBJS += \
-"./msp430g2xx3_ta_02.obj" \
+"./MSP430G2553_TIMERA_BLINK.obj" \
 "../lnk_msp430g2553.cmd" \
 $(GEN_CMDS__FLAG) \
 -llibc.a \
@@ -120,41 +120,41 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXE_OUTPUTS += \
-msp430g2xx3_ta_02.c.out \
+MSP430G2553_TIMERA_BLINK.out \
 
 EXE_OUTPUTS__QUOTED += \
-"msp430g2xx3_ta_02.c.out" \
+"MSP430G2553_TIMERA_BLINK.out" \
 
 BIN_OUTPUTS += \
-msp430g2xx3_ta_02.c.hex \
+MSP430G2553_TIMERA_BLINK.hex \
 
 BIN_OUTPUTS__QUOTED += \
-"msp430g2xx3_ta_02.c.hex" \
+"MSP430G2553_TIMERA_BLINK.hex" \
 
 
 # All Target
 all: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
-	@$(MAKE) --no-print-directory -Onone "msp430g2xx3_ta_02.c.out"
+	@$(MAKE) --no-print-directory -Onone "MSP430G2553_TIMERA_BLINK.out"
 
 # Tool invocations
-msp430g2xx3_ta_02.c.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
+MSP430G2553_TIMERA_BLINK.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: MSP430 Linker'
-	"C:/ti/ccsv7/tools/compiler/ti-cgt-msp430_16.9.4.LTS/bin/cl430" -vmsp --use_hw_mpy=none --advice:power=all --define=__MSP430G2553__ -g --printf_support=minimal --diag_warning=225 --diag_wrap=off --display_error_number -z -m"msp430g2xx3_ta_02.c.map" --heap_size=80 --stack_size=80 -i"C:/ti/ccsv7/ccs_base/msp430/include" -i"C:/ti/ccsv7/tools/compiler/ti-cgt-msp430_16.9.4.LTS/lib" -i"C:/ti/ccsv7/tools/compiler/ti-cgt-msp430_16.9.4.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="msp430g2xx3_ta_02.c_linkInfo.xml" --use_hw_mpy=none --rom_model -o "msp430g2xx3_ta_02.c.out" $(ORDERED_OBJS)
+	"C:/ti/ccsv7/tools/compiler/ti-cgt-msp430_16.9.4.LTS/bin/cl430" -vmsp --use_hw_mpy=none --advice:power=all --define=__MSP430G2553__ -g --printf_support=minimal --diag_warning=225 --diag_wrap=off --display_error_number -z -m"MSP430G2553_TIMERA_BLINK.map" --heap_size=80 --stack_size=80 -i"C:/ti/ccsv7/ccs_base/msp430/include" -i"C:/ti/ccsv7/tools/compiler/ti-cgt-msp430_16.9.4.LTS/lib" -i"C:/ti/ccsv7/tools/compiler/ti-cgt-msp430_16.9.4.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="MSP430G2553_TIMERA_BLINK_linkInfo.xml" --use_hw_mpy=none --rom_model -o "MSP430G2553_TIMERA_BLINK.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
-msp430g2xx3_ta_02.c.hex: $(EXE_OUTPUTS)
+MSP430G2553_TIMERA_BLINK.hex: $(EXE_OUTPUTS)
 	@echo 'Invoking: MSP430 Hex Utility'
-	"C:/ti/ccsv7/tools/compiler/ti-cgt-msp430_16.9.4.LTS/bin/hex430" --memwidth=8 --romwidth=8 -o "msp430g2xx3_ta_02.c.hex" $(EXE_OUTPUTS__QUOTED)
+	"C:/ti/ccsv7/tools/compiler/ti-cgt-msp430_16.9.4.LTS/bin/hex430" --memwidth=8 --romwidth=8 -o "MSP430G2553_TIMERA_BLINK.hex" $(EXE_OUTPUTS__QUOTED)
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "msp430g2xx3_ta_02.obj" 
-	-$(RM) "msp430g2xx3_ta_02.d" 
+	-$(RM) "MSP430G2553_TIMERA_BLINK.obj" 
+	-$(RM) "MSP430G2553_TIMERA_BLINK.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

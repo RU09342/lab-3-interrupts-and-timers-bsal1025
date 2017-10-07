@@ -9,21 +9,21 @@ CMD_SRCS += \
 ../lnk_msp430g2553.cmd 
 
 C_SRCS += \
-../main.c 
+../MSP430G2553_BUTTON_INTERRUPT.c 
 
 C_DEPS += \
-./main.d 
+./MSP430G2553_BUTTON_INTERRUPT.d 
 
 OBJS += \
-./main.obj 
+./MSP430G2553_BUTTON_INTERRUPT.obj 
 
 OBJS__QUOTED += \
-"main.obj" 
+"MSP430G2553_BUTTON_INTERRUPT.obj" 
 
 C_DEPS__QUOTED += \
-"main.d" 
+"MSP430G2553_BUTTON_INTERRUPT.d" 
 
 C_SRCS__QUOTED += \
-"../main.c" 
+"../MSP430G2553_BUTTON_INTERRUPT.c" 
 
 

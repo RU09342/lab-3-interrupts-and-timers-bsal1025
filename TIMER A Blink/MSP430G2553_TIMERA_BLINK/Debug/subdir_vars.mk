@@ -9,21 +9,21 @@ CMD_SRCS += \
 ../lnk_msp430g2553.cmd 
 
 C_SRCS += \
-../msp430g2xx3_ta_02.c 
+../MSP430G2553_TIMERA_BLINK.c 
 
 C_DEPS += \
-./msp430g2xx3_ta_02.d 
+./MSP430G2553_TIMERA_BLINK.d 
 
 OBJS += \
-./msp430g2xx3_ta_02.obj 
+./MSP430G2553_TIMERA_BLINK.obj 
 
 OBJS__QUOTED += \
-"msp430g2xx3_ta_02.obj" 
+"MSP430G2553_TIMERA_BLINK.obj" 
 
 C_DEPS__QUOTED += \
-"msp430g2xx3_ta_02.d" 
+"MSP430G2553_TIMERA_BLINK.d" 
 
 C_SRCS__QUOTED += \
-"../msp430g2xx3_ta_02.c" 
+"../MSP430G2553_TIMERA_BLINK.c" 
 
 

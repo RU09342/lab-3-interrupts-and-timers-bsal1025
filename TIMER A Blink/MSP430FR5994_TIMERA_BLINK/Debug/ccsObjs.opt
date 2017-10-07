@@ -1,1 +1,1 @@
-"./main.obj" "../lnk_msp430fr5994.cmd" -llibmpu_init.a -llibmath.a -llibc.a 
+"./MSP430FR5994_TIMERA_BLINK.obj" "../lnk_msp430fr5994.cmd" -llibmpu_init.a -llibmath.a -llibc.a 

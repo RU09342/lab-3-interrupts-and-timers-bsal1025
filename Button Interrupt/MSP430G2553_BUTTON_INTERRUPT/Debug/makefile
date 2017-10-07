@@ -10,7 +10,7 @@ GEN_OPTS__FLAG :=
 GEN_CMDS__FLAG := 
 
 ORDERED_OBJS += \
-"./main.obj" \
+"./MSP430G2553_BUTTON_INTERRUPT.obj" \
 "../lnk_msp430g2553.cmd" \
 $(GEN_CMDS__FLAG) \
 -llibc.a \
@@ -153,8 +153,8 @@ MSP430G2553_BUTTON_INTERRUPT.hex: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "main.obj" 
-	-$(RM) "main.d" 
+	-$(RM) "MSP430G2553_BUTTON_INTERRUPT.obj" 
+	-$(RM) "MSP430G2553_BUTTON_INTERRUPT.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 
