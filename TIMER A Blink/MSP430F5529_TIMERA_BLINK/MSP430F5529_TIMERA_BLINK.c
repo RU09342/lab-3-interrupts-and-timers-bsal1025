@@ -21,10 +21,10 @@ int main(void)
   TA0CCR0 = getclock(clocktype,frequency1,divider);  // Tells Timer to Count Up to output
                                                      // value of getclock before rolling over
 
-
   TA0CCTL1 = CCIE;                                   // CCR1 interrupt enabled
   TA0CCR1 = getclock2(clocktype,frequency2,divider); // Tells timer to count up to output value of
                                                      // getclock2 before rolling over
+
   TA0CTL = TASSEL_2 + MC_3 + ID_2;                   // SMCLK, upmode, 1/4 clock divider
 
   __bis_SR_register(LPM0_bits + GIE);       // Enter LPM0 w/ interrupt
